@@ -32,6 +32,10 @@ use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $avatar
+ * @property string|null $introduction
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereIntroduction($value)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -63,4 +67,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function topics()
+    {
+        return $this->hasMany(Topic::class);
+    }
 }
