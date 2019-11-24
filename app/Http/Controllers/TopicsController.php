@@ -45,7 +45,7 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->save();
-		return redirect()->to($topic->link())->with('message', '发布帖子成功！');
+		return redirect()->to($topic->link())->with('message', '帖子发布成功！');
 	}
 
     /**
@@ -71,7 +71,7 @@ class TopicsController extends Controller
 		$this->authorize('update', $topic);
 		$topic->update($request->all());
 
-		return redirect()->to($topic->link())->with('message', '更新成功！');
+		return redirect()->to($topic->link())->with('success', '帖子更新成功！');
 	}
 
     /**
@@ -85,7 +85,7 @@ class TopicsController extends Controller
 		$this->authorize('destroy', $topic);
 		$topic->delete();
 
-		return redirect()->route('topics.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('topics.index')->with('success', '帖子删除成功！');
 	}
 
     /**

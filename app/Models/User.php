@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\User
@@ -44,6 +46,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable {
         notify as protected laravelNotify;
     }
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -107,5 +110,24 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notification_count = 0;
         $this->save();
         $this->unreadNotifications->markAsRead();
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        // 如果值的长度等于 60，即认为是已经做过加密的情况
+        if (strlen($value) != 60) {
+            // 不等于 60，做密码加密处理
+            $value = bcrypt($value);
+        }
+
+        $this->attributes['password'] = $value;
+    }
+
+    public function setAvatarAttribute($path)
+    {
+        if (!Str::startsWith($path, 'http')) {
+            $path = config('app.url')."/uploads/images/avatar/$path";
+        }
+        $this->attributes['avatar'] = $path;
     }
 }
