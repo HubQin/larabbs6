@@ -258,3 +258,14 @@ Horizon started successfully.
 [2019-11-24 09:12:43][50] Processed:  App\Notifications\TopicReplied
 [2019-11-24 09:12:43][51] Processing: App\Notifications\TopicReplied
 [2019-11-24 09:12:43][51] Processed:  App\Notifications\TopicReplied
+Horizon started successfully.
+Horizon started successfully.
+[2019-11-25 23:46:05][1] Processing: App\Jobs\TranslateSlug
+[2019-11-25 23:46:05][1] Processed:  App\Jobs\TranslateSlug
+Horizon started successfully.
+[2019-11-26 00:03:06][2] Processing: App\Jobs\TranslateSlug
+[2019-11-26 00:03:06][4] Processing: App\Notifications\TopicReplied
+[2019-11-26 00:03:06][3] Processing: App\Notifications\TopicReplied
+[2019-11-26 00:03:07][3] Processed:  App\Notifications\TopicReplied
+[2019-11-26 00:03:07][2] Processed:  App\Jobs\TranslateSlug
+[2019-11-26 00:03:08][4] Processed:  App\Notifications\TopicReplied

@@ -9,13 +9,10 @@ use App\Models\User;
 
 class UserObserver
 {
-    public function creating(User $user)
+    public function saving(User $user)
     {
-        //
-    }
-
-    public function updating(User $user)
-    {
-        //
+        if (empty($user->avatar)) {
+            $user->avatar = config('app.url') . '/uploads/images/avatar/201911/24/1_1574607831_Er5MITXiPB.png';
+        }
     }
 }
