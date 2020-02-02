@@ -18,8 +18,15 @@ use Illuminate\Http\Request;
 });*/
 
 Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
-    // send sms
-    Route::post('verificationCodes', 'VerificationCodesController@store')->name('verificationCodes.store');
-    // register
-    Route::post('users', 'UsersController@store')->name('users.store');
+    Route::middleware('throttle:' . config('api.rate_limits.sign'))->group(function () {
+        // send sms
+        Route::post('verificationCodes', 'VerificationCodesController@store')->name('verificationCodes.store');
+        // register
+        Route::post('users', 'UsersController@store')->name('users.store');
+    });
+
+    Route::middleware('throttle:'. config('api.rate_limits.access'))->group(function () {
+        //
+    });
+
 });
