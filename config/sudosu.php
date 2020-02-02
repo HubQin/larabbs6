@@ -14,8 +14,8 @@ return [
     | .local, simply add it to the arrow below.
     |
      */
-    
-    'allowed_tlds' => ['dev', 'local', '67'],
+
+    'allowed_tlds' => ['dev', 'local', '67', 'test'],
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     | displayed in the select dropdown. This must be an Eloquent Model instance.
     |
      */
-    
+
     'user_model' => App\Models\User::class
-    
+
 ];

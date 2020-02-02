@@ -129,7 +129,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function setAvatarAttribute($path)
     {
         if (!Str::startsWith($path, 'http')) {
-            $path = config('app.url')."/uploads/images/avatar/$path";
+            $path = config('app.url')."/images/$path";
         }
         $this->attributes['avatar'] = $path;
     }

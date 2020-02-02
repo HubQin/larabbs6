@@ -15,8 +15,6 @@ Route::get('/', 'TopicsController@index')->name('root');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('users', 'UsersController', ['only' => ['show', 'edit', 'update']]);
 
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);

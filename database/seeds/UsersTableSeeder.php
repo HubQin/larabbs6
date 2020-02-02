@@ -17,11 +17,11 @@ class UsersTableSeeder extends Seeder
 
         // 头像假数据
         $avatars = [
-            'http://120.79.167.67/uploads/images/avatar/201911/17/1_1573961301_WioWOheY9j.png',
-            'http://120.79.167.67/uploads/images/avatar/201911/17/1_1573961360_13SsPykBcA.png',
-            'http://120.79.167.67/uploads/images/avatar/201911/17/1_1573961394_njX2PIwj8P.png',
-            'http://120.79.167.67/uploads/images/avatar/201911/17/1_1573961421_oJGQ0KQunT.png',
-            'http://120.79.167.67/uploads/images/avatar/201911/17/1_1573961439_bywK8Z2HZQ.png',
+            '1_1573961301_WioWOheY9j.png',
+            '1_1573961360_13SsPykBcA.png',
+            '1_1573961394_njX2PIwj8P.png',
+            '1_1573961421_oJGQ0KQunT.png',
+            '1_1573961439_bywK8Z2HZQ.png',
         ];
 
         $users = factory(User::class)->times(10)->make()->each(function ($user, $index) use ($faker, $avatars){
@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         $user->name = 'Summer';
         $user->email = 'summer@example.com';
-        $user->avatar = 'http://120.79.167.67/uploads/images/avatar/201911/17/1_1573961301_WioWOheY9j.png';
+        $user->avatar = '1_1573961439_bywK8Z2HZQ.png';
         $user->save();
 
         // 初始化用户角色，将 1 号用户指派为『站长』
