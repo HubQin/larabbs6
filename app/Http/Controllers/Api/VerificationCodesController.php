@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\VerificationCodeRequest;
+use App\Http\Requests\Api\VerificationCodeRequest;
 use Illuminate\Http\Request;
 use Overtrue\EasySms\EasySms;
 use Illuminate\Support\Str;
