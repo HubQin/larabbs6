@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-Route::prefix('v1')->name('api.v1.')->group(function() {
-
+Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
+    // send sms
+    Route::post('verificationCodes', 'VerificationCodesController@store')->name('verificationCodes.store');
 });
