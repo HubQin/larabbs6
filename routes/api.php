@@ -19,6 +19,8 @@ use Illuminate\Http\Request;
 
 Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
     Route::middleware('throttle:' . config('api.rate_limits.sign'))->group(function () {
+        // captcha
+        Route::post('captchas', 'captchasController@store')->name('captchas.store');
         // send sms
         Route::post('verificationCodes', 'VerificationCodesController@store')->name('verificationCodes.store');
         // register
