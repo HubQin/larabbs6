@@ -25,10 +25,17 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
         Route::post('verificationCodes', 'VerificationCodesController@store')->name('verificationCodes.store');
         // register
         Route::post('users', 'UsersController@store')->name('users.store');
+        // login
+        Route::post('authorizations', 'AuthorizationsController@store')
+            ->name('authorizations.store');
         // third party login
         Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
             ->where('social_type', 'weixin')
             ->name('socials.authorizations.store');
+        // update token
+        Route::put('authorizations/current', 'AuthorizationsController@update')->name('authorizations.update');
+        // delete token
+        Route::delete('authorizations/current', 'AuthorizationsController@destroy')->name('authorizations.destroy');
     });
 
     Route::middleware('throttle:'. config('api.rate_limits.access'))->group(function () {
