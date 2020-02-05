@@ -45,6 +45,8 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
 
         Route::get('categories', 'CategoriesController@index')->name('categories.index');
 
+        Route::resource('topics', 'TopicsController')->only(['index', 'show']);
+
         // should login
         Route::middleware('auth:api')->group(function () {
             // current login user's info
@@ -53,6 +55,8 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
             Route::patch('user', 'UsersController@update')->name('user.update');
             // upload image
             Route::post('images', 'ImagesController@store')->name('images.store');
+
+            Route::resource('topics', 'TopicsController')->only(['store', 'update', 'destroy']);
         });
 
     });
