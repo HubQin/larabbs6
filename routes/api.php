@@ -47,6 +47,10 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
         Route::middleware('auth:api')->group(function () {
             // current login user's info
             Route::get('user', 'UsersController@me')->name('user.show');
+            // Edit login User info
+            Route::patch('user', 'UsersController@update')->name('user.update');
+            // upload image
+            Route::post('images', 'ImagesController@store')->name('images.store');
         });
 
     });
