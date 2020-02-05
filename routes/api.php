@@ -43,6 +43,8 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
         // user info
         Route::get('users/{user}', 'UsersController@show')->name('users.show');
 
+        Route::get('categories', 'CategoriesController@index')->name('categories.index');
+
         // should login
         Route::middleware('auth:api')->group(function () {
             // current login user's info
