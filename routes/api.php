@@ -53,6 +53,8 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
         Route::get('users/{user}/replies', 'RepliesController@userIndex')
             ->name('user.replies.index');
 
+        Route::get('links', 'LinksController@index')->name('links.index');
+
         // should login
         Route::middleware('auth:api')->group(function () {
             // current login user's info
