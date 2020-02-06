@@ -46,6 +46,12 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
         Route::get('categories', 'CategoriesController@index')->name('categories.index');
 
         Route::resource('topics', 'TopicsController')->only(['index', 'show']);
+        // Reply list (On Topic)
+        Route::get('topics/{topic}/replies', 'RepliesController@index')
+            ->name('topics.replies.index');
+        // Reply list(On user)
+        Route::get('users/{user}/replies', 'RepliesController@userIndex')
+            ->name('user.replies.index');
 
         // should login
         Route::middleware('auth:api')->group(function () {
