@@ -54,6 +54,7 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
             ->name('user.replies.index');
 
         Route::get('links', 'LinksController@index')->name('links.index');
+        Route::get('actived/users', 'UsersController@activedIndex')->name('actived.users.index');
 
         // should login
         Route::middleware('auth:api')->group(function () {
