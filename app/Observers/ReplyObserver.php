@@ -21,7 +21,7 @@ class ReplyObserver
         $reply->topic->save();
 
         // 通知话题作者
-//        $reply->topic->user->notify(new TopicReplied($reply));
+        $reply->topic->user->notify(new TopicReplied($reply));
     }
 
     public function deleted(Reply $reply)
