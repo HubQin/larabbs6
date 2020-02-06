@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
+Route::prefix('v1')->namespace('Api')->middleware('change-locale')->name('api.v1.')->group(function() {
     Route::middleware('throttle:' . config('api.rate_limits.sign'))->group(function () {
         // captcha
         Route::post('captchas', 'captchasController@store')->name('captchas.store');
