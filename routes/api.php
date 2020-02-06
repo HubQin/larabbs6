@@ -59,6 +59,9 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
             Route::resource('topics', 'TopicsController')->only(['store', 'update', 'destroy']);
             // User's topic
             Route::get('users/{user}/topics', 'TopicsController@userIndex')->name('users.topics.index');
+
+            // Reply topic
+            Route::post('topics/{topic}/replies', 'RepliesController@store')->name('topics.replies.store');
         });
 
     });
