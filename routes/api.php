@@ -28,6 +28,12 @@ Route::prefix('v1')->namespace('Api')->middleware('change-locale')->name('api.v1
         // login
         Route::post('authorizations', 'AuthorizationsController@store')
             ->name('authorizations.store');
+        // 小程序登录
+        Route::post('weapp/authorizations', 'AuthorizationsController@weappStore')
+            ->name('weapp.authorizations.store');
+        // 小程序注册
+        Route::post('weapp/users', 'UsersController@weappStore')
+            ->name('weapp.users.store');
         // third party login
         Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
             ->where('social_type', 'weixin')
