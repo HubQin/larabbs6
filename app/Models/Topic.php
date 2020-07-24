@@ -91,4 +91,9 @@ class Topic extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function topReplies()
+    {
+        return $this->replies()->limit(5);
+    }
 }

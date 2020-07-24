@@ -42,6 +42,9 @@ Route::prefix('v1')->namespace('Api')->middleware('change-locale')->name('api.v1
         Route::put('authorizations/current', 'AuthorizationsController@update')->name('authorizations.update');
         // delete token
         Route::delete('authorizations/current', 'AuthorizationsController@destroy')->name('authorizations.destroy');
+
+        // User's topic
+        Route::get('users/{user}/topics', 'TopicsController@userIndex')->name('users.topics.index');
     });
 
     Route::middleware('throttle:'. config('api.rate_limits.access'))->group(function () {
@@ -68,12 +71,13 @@ Route::prefix('v1')->namespace('Api')->middleware('change-locale')->name('api.v1
             Route::get('user', 'UsersController@me')->name('user.show');
             // Edit login User info
             Route::patch('user', 'UsersController@update')->name('user.update');
+            // 小程序不支持patch，用put适配小程序
+            Route::put('user', 'UsersController@update')
+                ->name('user.update');
             // upload image
             Route::post('images', 'ImagesController@store')->name('images.store');
 
             Route::resource('topics', 'TopicsController')->only(['store', 'update', 'destroy']);
-            // User's topic
-            Route::get('users/{user}/topics', 'TopicsController@userIndex')->name('users.topics.index');
 
             // Reply topic
             Route::post('topics/{topic}/replies', 'RepliesController@store')->name('topics.replies.store');
@@ -86,6 +90,9 @@ Route::prefix('v1')->namespace('Api')->middleware('change-locale')->name('api.v1
             // Mark as read
             Route::patch('user/read/notifications', 'NotificationsController@read')
                 ->name('user.notifications.read');
+            // 兼容小程序
+            Route::put('user/read/notifications', 'NotificationsController@read')
+                ->name('user.notifications.read.put');
 
             // Permissions
             Route::get('user/permissions', 'PermissionsController@index')->name('user.permissions.index');
